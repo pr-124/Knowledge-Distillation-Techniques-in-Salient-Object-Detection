@@ -4,6 +4,7 @@
 import sys
 import datetime
 
+sys.path.append('/media/nvme2/expansion/leeor/ece-project')
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -18,7 +19,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 TAG = "ours"
-SAVE_PATH = "ours"
+SAVE_PATH = "/media/nvme2/expansion/leeor/ece-project/save"
 logger.basicConfig(level=logger.INFO, format='%(levelname)s %(asctime)s %(filename)s: %(lineno)d] %(message)s', datefmt='%Y-%m-%d %H:%M:%S', \
                            filename="train_%s.log"%(TAG), filemode="w")
 
@@ -53,7 +54,7 @@ FIND_LR = False #True
 
 def train(Dataset, Network):
     ## dataset
-    cfg    = Dataset.Config(datapath='./data/DUTS', savepath=SAVE_PATH, mode='train', batch=8, lr=0.05, momen=0.9, decay=5e-4, epoch=30)
+    cfg    = Dataset.Config(datapath='/media/nvme2/expansion/leeor/ece-project/data/DUTS/', savepath=SAVE_PATH, mode='train', batch=8, lr=0.05, momen=0.9, decay=5e-4, epoch=30)
     data   = Dataset.Data(cfg)
     loader = DataLoader(data, batch_size=cfg.batch, shuffle=True, num_workers=8)
     prefetcher = DataPrefetcher(loader)
