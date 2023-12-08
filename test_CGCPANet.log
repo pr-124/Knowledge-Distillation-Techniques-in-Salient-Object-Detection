@@ -1,0 +1,3 @@
+INFO 2023-12-08 12:24:54 test.py: 82] ECSSD MAE=0.050815, F-score=0.924392, len(imgs)=1000, fps=52.0067
+INFO 2023-12-08 12:30:35 test.py: 82] DUT-OMRON MAE=0.066737, F-score=0.781490, len(imgs)=5168, fps=81.3363
+INFO 2023-12-08 12:37:19 test.py: 82] DUTS MAE=0.056581, F-score=0.838050, len(imgs)=5019, fps=80.5185
