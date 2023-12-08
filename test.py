@@ -21,8 +21,8 @@ from net import GCPANet
 import time
 import logging as logger
 
-TAG = "GCPANet"
-SAVE_PATH = TAG
+TAG = "GCPANet30"
+SAVE_PATH = "/media/nvme2/expansion/leeor/ece-project/save"
 GPU_ID=0
 os.environ['CUDA_VISIBLE_DEVICES'] = str(GPU_ID)
 
@@ -30,8 +30,8 @@ logger.basicConfig(level=logger.INFO, format='%(levelname)s %(asctime)s %(filena
                            filename="test_%s.log"%(TAG), filemode="w")
 
 
-DATASETS = ['./data/SOD', './data/PASCAL-S', './data/ECSSD', './data/HKU-IS',
-            './data/DUT-OMRON', './data/DUTS']
+DATASETS = ['/media/nvme2/expansion/leeor/ece-project/data/SOD', '/media/nvme2/expansion/leeor/ece-project/data/PASCAL-S', '/media/nvme2/expansion/leeor/ece-project/data/ECSSD', '/media/nvme2/expansion/leeor/ece-project/data/HKU-IS',
+            '/media/nvme2/expansion/leeor/ece-project/data/DUT-OMRON', '/media/nvme2/expansion/leeor/ece-project/data/DUTS']
 
 class Test(object):
     def __init__(self, Dataset, datapath, Network):
@@ -88,7 +88,7 @@ class Test(object):
                 out2, out3, out4, out5 = self.net(image.cuda().float())
                 out2     = F.interpolate(out2, size=(H,W), mode='bilinear')
                 pred     = (torch.sigmoid(out2[0,0])*255).cpu().numpy()
-                head     = './pred_maps/{}/'.format(TAG) + self.cfg.datapath.split('/')[-1]
+                head     = '/media/nvme2/expansion/leeor/ece-project/pred_maps/{}/'.format(TAG) + self.cfg.datapath.split('/')[-1]
                 if not os.path.exists(head):
                     os.makedirs(head)
                 cv2.imwrite(head+'/'+name[0],np.uint8(pred))
