@@ -165,8 +165,8 @@ def run_eval(savefigs = ['DUTS', 'ECSSD', 'DUT-OMRON']):
         # Plotting the PR curve for each dataset
         plt.figure()
         plt.step(recall_interp, precision_interp, where='post')
-        plt.ylim((0,1))
-        plt.xlim((0,1))
+        plt.ylim((-0.01,1.01))
+        # plt.xlim((-0.01,1.01))
         plt.xlabel('Recall')
         plt.ylabel('Precision')
         plt.title(f'Precision-Recall Curve for {dataset}')
